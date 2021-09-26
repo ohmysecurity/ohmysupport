@@ -13,15 +13,15 @@
 <div class="album py-5 bg-light">
   <%= yield %>
   <div class="container">
-
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%- @categories.each do |category| %>
       <div class="col">
         <div class="card shadow-sm">
           <div class="card-body">
             <p class="card-title">
               <a href="#">
                 <h2>
-                  Category 1
+                  <%= category.name %>
                 </h2>
               </a>
             </p>
@@ -29,6 +29,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

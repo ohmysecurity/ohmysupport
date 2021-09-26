@@ -1,8 +1,9 @@
 # Ohmysupport
-Short description and motivation.
+
+Missing helpdesk engine for Rails apps
 
 ## Usage
-How to use my plugin.
+TBD
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -13,16 +14,15 @@ gem 'ohmysupport'
 
 And then execute:
 ```bash
-$ bundle
+$ bundle install
 ```
 
-Or install it yourself as:
 ```bash
-$ gem install ohmysupport
+rails ohmysupport:install:migrations
 ```
 
 ## Contributing
-Contribution directions go here.
+TBD
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
