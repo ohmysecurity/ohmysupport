@@ -1,3 +1,21 @@
-Tickets here!
+<br />
 
-<%= link_to 'New ticket', new_ticket_path %>
+<div class='container'>
+  <%= link_to 'New ticket', new_ticket_path, class: 'btn btn-primary' %>
+
+  <br />
+  <br />
+
+  <ul class="list-group">
+    <%- @tickets.each do |ticket| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+        <%= link_to ticket.title, ticket_path(ticket) %>
+        at
+        <%= ticket.created_at %>
+        </span>
+        <span class="badge bg-primary rounded-pill"><%= ticket.state %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

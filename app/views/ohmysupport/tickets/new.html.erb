@@ -1,0 +1,53 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMaXZlbGxvIDEiIGlkPSJMaXZlbGxvXzEiIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PHBhdGggZD0iTTY0LDBhNjQsNjQsMCwxLDAsNjQsNjRBNjQuMDcsNjQuMDcsMCwwLDAsNjQsMFptMCwxMjJhNTgsNTgsMCwxLDEsNTgtNThBNTguMDcsNTguMDcsMCwwLDEsNjQsMTIyWiIvPjxwYXRoIGQ9Ik05MCw2MUg2N1YzOGEzLDMsMCwwLDAtNiwwVjYxSDM4YTMsMywwLDAsMCwwLDZINjFWOTBhMywzLDAsMCwwLDYsMFY2N0g5MGEzLDMsMCwwLDAsMC02WiIvPjwvc3ZnPg==" alt="" width="72" height="57">
+      <h2>New ticket</h2>
+      <p class="lead">
+        In order to get our response in a timely manner make sure you provide as much useful information as you can.
+        Screenshots, videos are highly encouraged.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Information</h4>
+
+        <%= form_for @ticket, class: 'needs-validation' do |f| %>
+          <div class="row g-3">
+            <%- unless current_user %>
+              <div class="col-sm-6">
+                <%= f.label :name, 'Name', class: 'form-label' %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+
+              <div class="col-sm-6">
+                <%= f.label :email, 'Email', class: 'form-label' %>
+                <%= f.text_field :email, placeholder: 'your@email.com', class: 'form-control' %>
+              </div>
+            <% end %>
+
+            <div class="col-sm-6">
+              <%= f.label :category_id, 'Category', class: 'form-label' %>
+              <%= f.collection_select :category_id, Ohmysupport::Category.all, :id, :name, {}, class: 'form-select' %>
+            </div>
+
+            <div class="col-sm-12">
+              <%= f.label :title, 'Title', class: 'form-label' %>
+              <%= f.text_field :title, required: true, class: 'form-control' %>
+            </div>
+
+            <div class="col-sm-12">
+              <%= f.label :description, 'Description', class: 'form-label' %>
+              <%= f.text_area :description, required: true, class: 'form-control' %>
+            </div>
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Submit ticket</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>
+
+

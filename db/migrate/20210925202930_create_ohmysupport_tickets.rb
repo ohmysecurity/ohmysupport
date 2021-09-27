@@ -6,7 +6,7 @@ class CreateOhmysupportTickets < ActiveRecord::Migration[6.1]
       t.string :email
       t.integer :author_id
       t.integer :category_id, null: false
-      t.string :name, null: false
+      t.string :name
       t.string :state, null: false, default: 'pending'
 
       t.timestamps

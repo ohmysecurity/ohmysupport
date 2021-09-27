@@ -1,0 +1,19 @@
+<br />
+
+<div class='container'>
+  <%= link_to 'Back to tickets', tickets_path, class: 'btn btn-primary' %>
+
+  <br />
+  <br />
+
+  <p class='lead'>
+    <h2>
+      <%= @ticket.title %>
+      <span class="badge bg-secondary"><%= @ticket.state %></span>
+    </h2>
+    <%= @ticket.description %>
+  </p>
+  Posted at <%= @ticket.created_at %>
+
+  <hr />
+</div>

@@ -11,8 +11,9 @@
 </section>
 
 <div class="album py-5 bg-light">
-  <%= yield %>
   <div class="container">
+    <%#TODO: align center%>
+    <h2 class="fw-light">Knowledge Base</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <%- @categories.each do |category| %>
       <div class="col">
@@ -24,6 +25,9 @@
                   <%= category.name %>
                 </h2>
               </a>
+            </p>
+            <p class="card-subtitle">
+              <%= category.description %>
             </p>
             <div class="d-flex justify-content-between align-items-center"></div>
           </div>
