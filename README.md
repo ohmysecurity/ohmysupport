@@ -21,6 +21,13 @@ $ bundle install
 rails ohmysupport:install:migrations
 ```
 
+Seed some categories for support tickets and articles in knowledge base
+```ruby
+Ohmysupport::Category.create!(name: 'Platform', description: 'Everything related to the functionality of application')
+Ohmysupport::Category.create!(name: 'Billing', description: 'Payments and refunds')
+Ohmysupport::Category.create!(name: 'VPN connection', description: 'Connectivity related issues')
+```
+
 ## Contributing
 TBD
 
