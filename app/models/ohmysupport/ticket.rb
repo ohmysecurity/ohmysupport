@@ -5,5 +5,6 @@ module Ohmysupport
     validates :category_id, presence: true
     # TODO: validate either email or author_id fields presence
     #validates :name, presence: true
+    has_many :responses, class_name: 'Ticket::Response'
   end
 end

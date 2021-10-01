@@ -3,7 +3,9 @@ Ohmysupport::Engine.routes.draw do
     resources :articles
   end
 
-  resources :tickets, only: [:index, :show, :new, :create]
+  resources :tickets, only: [:index, :show, :new, :create] do
+    resources :responses, only: [:create]
+  end
 
   root to: 'home#index'
 end

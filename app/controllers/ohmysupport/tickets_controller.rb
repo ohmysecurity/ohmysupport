@@ -2,6 +2,7 @@ require_dependency "ohmysupport/application_controller"
 
 module Ohmysupport
   class TicketsController < ApplicationController
+    # TODO: allow anonymous user just to create tickets
     def index
       @tickets = Ohmysupport::Ticket.all
     end
@@ -21,6 +22,7 @@ module Ohmysupport
     end
 
     def show
+      @response = Ohmysupport::Ticket::Response.new
       @ticket = Ohmysupport::Ticket.find(params[:id])
     end
 

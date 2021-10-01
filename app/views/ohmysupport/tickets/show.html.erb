@@ -16,4 +16,27 @@
   Posted at <%= @ticket.created_at %>
 
   <hr />
+
+  <h4>Responses</h4>
+
+  <%- @ticket.responses.each do |response| %>
+    <%= response.body %>
+    <%= response.author.email %>
+    by
+    <%= response.created_at %>
+  <% end %>
+
+  <%- if signed_in? %>
+    <%= form_for @response, url: ticket_responses_path(@ticket), class: 'needs-validation' do |f| %>
+      <div class="row g-3">
+        <div class="col-sm-12">
+          <%= f.label :body, 'Body', class: 'form-label' %>
+          <%= f.text_area :body, required: true, class: 'form-control' %>
+        </div>
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
