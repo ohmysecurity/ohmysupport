@@ -1,7 +1,6 @@
 module Ohmysupport
   class Ticket::Response < ApplicationRecord
-    validates :body, presence: true
-    # TODO: add relation to author
+    validates :body, :author_id, :author_type, presence: true
     belongs_to :ticket
 
     # TODO: This is N+1, fix it

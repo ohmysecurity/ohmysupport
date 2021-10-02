@@ -11,7 +11,7 @@ module Ohmysupport
     private
 
     def params_with_author(params)
-      params.merge(author_id: @author.id)
+      params.merge(author_id: @author&.id)
     end
   end
 end

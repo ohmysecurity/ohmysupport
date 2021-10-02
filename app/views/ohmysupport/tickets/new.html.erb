@@ -18,12 +18,12 @@
             <%- unless current_user %>
               <div class="col-sm-6">
                 <%= f.label :name, 'Name', class: 'form-label' %>
-                <%= f.text_field :name, class: 'form-control' %>
+                <%= f.text_field :name, required: true, class: 'form-control' %>
               </div>
 
               <div class="col-sm-6">
                 <%= f.label :email, 'Email', class: 'form-label' %>
-                <%= f.text_field :email, placeholder: 'your@email.com', class: 'form-control' %>
+                <%= f.text_field :email, required: true, placeholder: 'your@email.com', class: 'form-control' %>
               </div>
             <% end %>
 
