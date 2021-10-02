@@ -12,8 +12,11 @@ module Ohmysupport
     end
 
     def create
-      @ticket = Ohmysupport::Ticket.new(ticket_params)
-      if @ticket.save
+      @ticket = Ohmysupport::PostTicket
+        .new(current_user)
+        .call(ticket_params)
+
+      if @ticket.valid?
         redirect_to tickets_path, notice: 'Your ticket was submitted'
       else
         flash[:alert] = 'Invalid form'
