@@ -26,9 +26,21 @@
 
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <%- if current_user || current_staff %>
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <%= Ohmysupport.brand_name %>
+                </a>
+              </li>
+
+              <%- if current_user %>
                 <li class="nav-item">
                   <a class="nav-link" href="<%= tickets_path %>">Tickets</a>
+                </li>
+              <% end %>
+
+              <%- if current_staff %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= staff_tickets_path %>">Staff</a>
                 </li>
               <% end %>
             </ul>

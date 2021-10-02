@@ -2,6 +2,7 @@ require_dependency "ohmysupport/application_controller"
 
 module Ohmysupport
   class ResponsesController < ApplicationController
+    before_action :any_signed_in?
     before_action :load_ticket, only: [:create]
 
     def create

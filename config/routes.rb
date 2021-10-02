@@ -7,5 +7,9 @@ Ohmysupport::Engine.routes.draw do
     resources :responses, only: [:create]
   end
 
+  namespace :staff do
+    resources :tickets, only: [:index]
+  end
+
   root to: 'home#index'
 end

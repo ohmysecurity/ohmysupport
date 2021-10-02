@@ -8,5 +8,9 @@ module Ohmysupport
       class_name: Ohmysupport.user_model,
       foreign_key: 'author_id',
       optional: true
+
+    def owned_by?(user)
+      author == user
+    end
   end
 end
