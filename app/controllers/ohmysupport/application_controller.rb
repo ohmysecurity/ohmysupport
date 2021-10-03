@@ -3,7 +3,7 @@ module Ohmysupport
     private
 
     def any_signed_in?
-      user_signed_in? || staff_signed_in?
+      (current_staff || current_user) ? true : handle_unauthorized
     end
 
     def user_signed_in?

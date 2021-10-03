@@ -1,7 +1,11 @@
 <br />
 
 <div class='container'>
-  <%= link_to 'Back to tickets', tickets_path, class: 'btn btn-primary' %>
+  <%- if current_user %>
+    <%= link_to 'Back to tickets', tickets_path, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Staff tickets', staff_tickets_path, class: 'btn btn-primary' %>
+  <% end %>
 
   <br />
   <br />
@@ -9,14 +13,13 @@
   <p class='lead'>
     <h2>
       <%= @ticket.title %>
-      <span class="badge bg-secondary"><%= @ticket.state %></span>
+      <span class="badge bg-secondary"><%= @ticket.state.humanize %></span>
     </h2>
     <%= @ticket.description %>
   </p>
   Posted at <%= @ticket.created_at %>
 
   <hr />
-
   <h4>Responses</h4>
 
   <%- @ticket.responses.each do |response| %>
@@ -24,6 +27,7 @@
     <%= response.author.email %>
     by
     <%= response.created_at %>
+    <br />
   <% end %>
 
   <%- if signed_in? %>

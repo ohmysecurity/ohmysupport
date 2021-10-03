@@ -28,6 +28,12 @@ Ohmysupport::Category.create!(name: 'Billing', description: 'Payments and refund
 Ohmysupport::Category.create!(name: 'VPN connection', description: 'Connectivity related issues')
 ```
 
+## TODO:
+
+* Decouple engine from devise dependencies
+* Cover with specs
+* Make a demo app
+
 ## Contributing
 TBD
 
