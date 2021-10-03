@@ -14,7 +14,7 @@
         at
         <%= ticket.created_at %>
         </span>
-        <span class="badge bg-primary rounded-pill"><%= ticket.state.humanize %></span>
+        <span class="badge <%= ticket_badge_color(ticket) %> rounded-pill"><%= ticket.state.humanize %></span>
       </li>
     <% end %>
   </ul>

@@ -8,7 +8,11 @@ Ohmysupport::Engine.routes.draw do
   end
 
   namespace :staff do
-    resources :tickets, only: [:index]
+    resources :tickets, only: [:index] do
+      member do
+        delete :close
+      end
+    end
   end
 
   root to: 'home#index'
