@@ -13,6 +13,7 @@ module Ohmysupport
       class_name: Ohmysupport.user_model,
       foreign_key: 'author_id',
       optional: true
+    belongs_to :category
 
     aasm column: 'state' do
       state :pending, initial: true

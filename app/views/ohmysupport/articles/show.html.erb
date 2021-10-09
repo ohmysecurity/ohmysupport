@@ -1,0 +1,21 @@
+<div class='container'>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">
+          <%= @category.name %>/<%= @article.title %>
+        </h1>
+        <span class="badge <%= article_badge_color(@article) %> rounded-pill">
+          <%= @article.state %>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <%= link_to 'All articles', category_path(@category), class: 'btn btn-primary' %>
+  <%= button_to 'Toggle', toggle_category_article_path(@category, @article), method: :patch, class: 'btn btn-primary' %>
+  <%= link_to 'Edit', edit_category_article_path(@category, @article), class: 'btn btn-primary' %>
+
+  <div class="article-body">
+  </div>
+</div>

@@ -1,6 +1,10 @@
 Ohmysupport::Engine.routes.draw do
   resources :categories, only: [:show] do
-    resources :articles
+    resources :articles, except: [:index, :delete] do
+      member do
+        patch :toggle
+      end
+    end
   end
 
   resources :tickets, only: [:index, :show, :new, :create] do
