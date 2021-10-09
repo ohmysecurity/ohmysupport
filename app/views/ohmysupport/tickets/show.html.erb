@@ -1,0 +1,47 @@
+<br />
+
+<div class='container'>
+  <%- if current_user %>
+    <%= link_to 'Back to tickets', tickets_path, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Staff tickets', staff_tickets_path, class: 'btn btn-primary' %>
+    <%= button_to 'Close', close_staff_ticket_path(@ticket), method: :delete, class: 'btn btn-danger' %>
+  <% end %>
+
+  <br />
+  <br />
+
+  <p class='lead'>
+    <h2>
+      <%= @ticket.title %>
+      <span class="badge <%=ticket_badge_color(@ticket)%>"><%= @ticket.state.humanize %></span>
+    </h2>
+    <%= @ticket.description %>
+  </p>
+  Posted at <%= @ticket.created_at %>
+
+  <hr />
+  <h4>Responses</h4>
+
+  <%- @ticket.responses.each do |response| %>
+    <%= response.body %>
+    <%= response.author.email %>
+    by
+    <%= response.created_at %>
+    <br />
+  <% end %>
+
+  <%- if signed_in? %>
+    <%= form_for @response, url: ticket_responses_path(@ticket), class: 'needs-validation' do |f| %>
+      <div class="row g-3">
+        <div class="col-sm-12">
+          <%= f.label :body, 'Body', class: 'form-label' %>
+          <%= f.text_area :body, required: true, class: 'form-control' %>
+        </div>
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>

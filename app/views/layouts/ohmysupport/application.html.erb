@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Ohmysupport</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>Support | <%= Ohmysupport.brand_name %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    "ohmysupport/application", media: "all" %>
-</head>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "ohmysupport/application", media: "all" %>
+  </head>
 
-<%= yield %>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a href="<%= root_path %>" class="navbar-brand d-flex align-items-center">
+            <img width="32px" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNzkyIiB2aWV3Qm94PSIwIDAgMTc5MiAxNzkyIiB3aWR0aD0iMTc5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNODk2IDBxMTgyIDAgMzQ4IDcxdDI4NiAxOTEgMTkxIDI4NiA3MSAzNDgtNzEgMzQ4LTE5MSAyODYtMjg2IDE5MS0zNDggNzEtMzQ4LTcxLTI4Ni0xOTEtMTkxLTI4Ni03MS0zNDggNzEtMzQ4IDE5MS0yODYgMjg2LTE5MSAzNDgtNzF6bTAgMTI4cS0xOTAgMC0zNjEgOTBsMTk0IDE5NHE4Mi0yOCAxNjctMjh0MTY3IDI4bDE5NC0xOTRxLTE3MS05MC0zNjEtOTB6bS02NzggMTEyOWwxOTQtMTk0cS0yOC04Mi0yOC0xNjd0MjgtMTY3bC0xOTQtMTk0cS05MCAxNzEtOTAgMzYxdDkwIDM2MXptNjc4IDQwN3ExOTAgMCAzNjEtOTBsLTE5NC0xOTRxLTgyIDI4LTE2NyAyOHQtMTY3LTI4bC0xOTQgMTk0cTE3MSA5MCAzNjEgOTB6bTAtMzg0cTE1OSAwIDI3MS41LTExMi41dDExMi41LTI3MS41LTExMi41LTI3MS41LTI3MS41LTExMi41LTI3MS41IDExMi41LTExMi41IDI3MS41IDExMi41IDI3MS41IDI3MS41IDExMi41em00ODQtMjE3bDE5NCAxOTRxOTAtMTcxIDkwLTM2MXQtOTAtMzYxbC0xOTQgMTk0cTI4IDgyIDI4IDE2N3QtMjggMTY3eiIvPjwvc3ZnPg==">
+            &nbsp;
+            <strong><%= Ohmysupport.brand_name %> | Support</strong>
+          </a>
 
-</body>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <%= Ohmysupport.brand_name %>
+                </a>
+              </li>
+
+              <%- if current_user %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= tickets_path %>">Tickets</a>
+                </li>
+              <% end %>
+
+              <%- if current_staff %>
+                <li class="nav-item">
+                  <a class="nav-link" href="<%= staff_tickets_path %>">Staff</a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%- if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%- if flash[:alert] %>
+        <div class="alert alert-warning" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">&copy; <%= Ohmysupport.brand_name %> <%= current_year %></p>
+      </div>
+    </footer>
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  </body>
 </html>
