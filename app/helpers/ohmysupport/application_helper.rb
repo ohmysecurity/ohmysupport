@@ -27,9 +27,17 @@ module Ohmysupport
     end
 
     def markdown(text)
-      text
-      #options = [:hard_wrap, :autolink, :no_intra_emphasis, :fenced_code_blocks]
-      #::Redcarpet::Markdown.new(text).to_html.html_safe
+      md = ::Redcarpet::Markdown.new(::Redcarpet::Render::HTML, markdown_options)
+      md.render(text)
+    end
+
+    def markdown_options
+      {
+        hard_wrap: true,
+        autolink: true,
+        no_intra_emphasis: true,
+        fenced_code_blocks: true
+      }
     end
   end
 end
