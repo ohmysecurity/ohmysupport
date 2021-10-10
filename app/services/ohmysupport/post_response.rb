@@ -7,8 +7,9 @@ module Ohmysupport
 
     def call(params)
       change_state
-      @ticket.responses.create(params_with_author(params))
-      # TODO: send_email_notification
+      @ticket.responses.create(params_with_author(params)).tap do |response|
+        send_email_notification
+      end
     end
 
     private
@@ -20,6 +21,13 @@ module Ohmysupport
         # When admin posts response
         @ticket.respond! if @ticket.on_staff?
       end
+    end
+
+    def send_email_notification
+      Ohmysupport::NewTicketResponseMailer
+        .notify(@ticket.id)
+        .deliver_later
+
     end
 
     def params_with_author(params)
