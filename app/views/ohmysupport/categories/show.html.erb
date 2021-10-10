@@ -10,10 +10,11 @@
     </div>
   </section>
 
-  <%= link_to 'New', new_category_article_path(@category), class: 'btn btn-primary' %>
-
-  <br />
-  <br />
+  <%- if current_staff %>
+    <%= link_to 'New', new_category_article_path(@category), class: 'btn btn-primary' %>
+    <br />
+    <br />
+  <% end %>
 
   <ul class="list-group">
     <%- @articles.each do |article| %>
@@ -21,7 +22,9 @@
         <h4>
           <%= link_to article.title, category_article_path(@category, article) %>
         </h4>
-        <span class="badge <%= article_badge_color(article) %> rounded-pill"><%= article.state %></span>
+        <%- if current_staff %>
+          <span class="badge <%= article_badge_color(article) %> rounded-pill"><%= article.state %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>

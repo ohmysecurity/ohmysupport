@@ -1,5 +1,6 @@
 require "ohmysupport/version"
 require "ohmysupport/engine"
+require 'redcarpet'
 
 module Ohmysupport
   # TODO: probably we don't need this?

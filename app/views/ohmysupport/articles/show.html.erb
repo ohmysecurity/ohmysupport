@@ -5,17 +5,23 @@
         <h1 class="fw-light">
           <%= @category.name %>/<%= @article.title %>
         </h1>
-        <span class="badge <%= article_badge_color(@article) %> rounded-pill">
-          <%= @article.state %>
-        </span>
+
+        <%- if current_staff %>
+          <span class="badge <%= article_badge_color(@article) %> rounded-pill">
+            <%= @article.state %>
+          </span>
+        <% end %>
       </div>
     </div>
   </section>
 
   <%= link_to 'All articles', category_path(@category), class: 'btn btn-primary' %>
-  <%= button_to 'Toggle', toggle_category_article_path(@category, @article), method: :patch, class: 'btn btn-primary' %>
-  <%= link_to 'Edit', edit_category_article_path(@category, @article), class: 'btn btn-primary' %>
+  <%- if current_staff %>
+    <%= button_to 'Toggle', toggle_category_article_path(@category, @article), method: :patch, class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_category_article_path(@category, @article), class: 'btn btn-primary' %>
+  <% end %>
 
   <div class="article-body">
+    <%= markdown(@article.description) %>
   </div>
 </div>
