@@ -1,5 +1,6 @@
 require "ohmysupport/version"
 require "ohmysupport/engine"
+require 'redcarpet'
 
 module Ohmysupport
   # TODO: probably we don't need this?
@@ -7,6 +8,7 @@ module Ohmysupport
   mattr_accessor :current_staff_method
   mattr_accessor :brand_name
   mattr_accessor :user_model
+  mattr_accessor :mail_from_address
 
   def self.current_user
     send(@@current_user)
@@ -15,4 +17,9 @@ module Ohmysupport
   def self.user_model
     @@user_model
   end
+
+  def self.mail_from_address
+    @@mail_from_address
+  end
+
 end

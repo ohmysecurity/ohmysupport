@@ -25,5 +25,19 @@ module Ohmysupport
         'bg-danger'
       end
     end
+
+    def markdown(text)
+      md = ::Redcarpet::Markdown.new(::Redcarpet::Render::HTML, markdown_options)
+      md.render(text)
+    end
+
+    def markdown_options
+      {
+        hard_wrap: true,
+        autolink: true,
+        no_intra_emphasis: true,
+        fenced_code_blocks: true
+      }
+    end
   end
 end

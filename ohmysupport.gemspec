@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 6.1.4", ">= 6.1.4.1"
   spec.add_dependency "aasm", "~> 5.2.0"
+  spec.add_dependency "redcarpet"
 end

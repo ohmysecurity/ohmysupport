@@ -32,6 +32,10 @@ module Ohmysupport
       end
     end
 
+    def author_email
+      author&.email || email
+    end
+
     def owned_by?(user)
       author == user
     end

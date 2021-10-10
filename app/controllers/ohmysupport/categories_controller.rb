@@ -5,7 +5,11 @@ module Ohmysupport
     before_action :find_category, only: [:show]
 
     def show
-      @articles = @category.articles
+      @articles = if current_staff
+                    @category.articles
+                  else
+                    @category.articles.enabled
+                  end
     end
 
     private
