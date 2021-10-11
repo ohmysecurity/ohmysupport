@@ -30,8 +30,11 @@ Ohmysupport::Category.create!(name: 'VPN connection', description: 'Connectivity
 
 ## TODO:
 
+* Create ticket on incoming mail
 * Decouple engine from devise dependencies
 * Cover with specs
+* Fully use I18n
+* I18n rake specs
 * Make a demo app
 
 ## Contributing
