@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Stanislav Mekhonoshin"]
   spec.email       = ["ejabberd@gmail.com"]
   spec.homepage    = "https://github.com/ohmysecurity/ohmysupport"
-  spec.summary     = "Summary of Ohmysupport."
+  spec.summary     = "A tiny helpdesk engine for Rails applications"
   spec.description = "Description of Ohmysupport."
   spec.license     = "MIT"
 
