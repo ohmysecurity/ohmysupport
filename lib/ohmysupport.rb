@@ -8,6 +8,7 @@ module Ohmysupport
   mattr_accessor :current_staff_method
   mattr_accessor :brand_name
   mattr_accessor :user_model
+  mattr_accessor :staff_model
   mattr_accessor :mail_from_address
 
   def self.current_user
@@ -18,8 +19,11 @@ module Ohmysupport
     @@user_model
   end
 
+  def self.staff_model
+    @@staff_model
+  end
+
   def self.mail_from_address
     @@mail_from_address
   end
-
 end
